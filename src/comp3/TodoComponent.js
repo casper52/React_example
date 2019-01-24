@@ -8,6 +8,17 @@ class TodoComponent extends Component{
         todos: ['AAA','BBB','CCC']
     }
 
+    removeTodo = (idx) => {
+        console.log("TodoComponent removeTodo...."+idx)
+
+        this.state.todos.splice(idx,1)
+        console.log(this.state.todos)
+
+        this.setState({
+            todos: this.state.todos
+        })
+    }
+
     addTodo = (newTodo) => {
        console.log("add To do ...." + newTodo)
        console.log(this.state)
@@ -20,7 +31,7 @@ class TodoComponent extends Component{
         return(
             <div>
                 <TodoInput add={this.addTodo}/>
-                <TodoList arr={this.state.todos}/>
+                <TodoList arr={this.state.todos} remove={this.removeTodo}/>
             </div>
         )
     }
